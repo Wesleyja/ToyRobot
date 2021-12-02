@@ -80,7 +80,9 @@ class Robot
   end
 
   def report
-    return unless self.placed?
+    unless self.placed?
+      return 'The Robot hasnt been placed yet :)'
+    end
 
     return "#{self.x},#{self.y},#{DIRECTION_CONVERT.key((self.trueDirection))}"
   end

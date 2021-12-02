@@ -30,16 +30,14 @@ RSpec.describe 'Robot Spec', type: :class do
     end
 
     context 'commands when not on table' do 
-      it 'move command ignored' do 
-        
-      end
 
-      it 'left command ignored' do 
-
-      end
-
-      it 'right command ignored' do 
-
+      it 'commands ignored' do 
+        empty_robot.left
+        empty_robot.right
+        empty_robot.move
+        empty_robot.left
+        expect(empty_robot.report).to eq('The Robot hasnt been placed yet :)')
+        expect([empty_robot.x, empty_robot.y, empty_robot.direction]).to eq([empty_robot_two.x, empty_robot_two.y, empty_robot_two.direction])
       end
 
     end
@@ -103,7 +101,6 @@ RSpec.describe 'Robot Spec', type: :class do
         # 2,3 north
         robot.move
         robot.move
-        puts robot.report
         # 2,4 north
         robot.right
         # 2,4,east
