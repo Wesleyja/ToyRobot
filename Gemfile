@@ -8,4 +8,4 @@ gem 'rspec'
 gem 'rspec-core'
 gem 'byebug'
 gem 'factory_bot'
-# gem "activemodel"
+gem "active_model"
