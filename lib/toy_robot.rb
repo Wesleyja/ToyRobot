@@ -17,12 +17,18 @@ class ToyRobot
   private
 
   def print_menu
-    puts "------- Toy Robot -------"
-    print "> "
+    puts '------- Toy Robot -------'
+    puts 'Please choose an option - Case Insensitive'
+    puts 'PLACE X,Y,Direction  example: PLACE 0,0,NORTH'
+    puts 'MOVE'
+    puts 'LEFT'
+    puts 'RIGHT'
+    puts 'EXIT'
+    print '> '
   end
 
   def route_action(choice)
-    if choice[0].include?('PLACE')
+    if choice[0].upcase.include?('PLACE')
       values = choice[1].split(',')
     end
     case choice[0].upcase.to_sym
@@ -32,7 +38,7 @@ class ToyRobot
     when :RIGHT then @robot.right
     when :REPORT then puts @robot.report
     when :EXIT then stop!
-    else puts "Try again..."
+    else puts 'Try again...'
     end
   end
 
