@@ -7,5 +7,5 @@ gem 'simplecov'
 gem 'rspec'
 gem 'rspec-core'
 gem 'byebug'
-# gem 'faker'
 gem 'factory_bot'
+gem "active_model"

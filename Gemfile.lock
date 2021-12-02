@@ -1,6 +1,8 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (6.1.4.1)
+      activesupport (= 6.1.4.1)
     activesupport (6.1.4.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
@@ -13,8 +15,6 @@ GEM
     docile (1.4.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
-    faker (2.19.0)
-      i18n (>= 1.6, < 2)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     minitest (5.14.4)
@@ -45,9 +45,9 @@ PLATFORMS
   arm64-darwin-21
 
 DEPENDENCIES
+  activemodel
   byebug
   factory_bot
-  faker
   rspec
   rspec-core
   simplecov
