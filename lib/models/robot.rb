@@ -30,10 +30,12 @@ class Robot
     if (DIRECTIONS.include?(direction.upcase))
       robot.direction = DIRECTION_CONVERT[direction.upcase]
     end
+
+    robot
   end
 
   def placed? 
-    !robot.direction.nil?
+    !self.direction.nil?
   end
 
   def trueDirection 
@@ -80,7 +82,7 @@ class Robot
   def report
     return unless self.placed?
 
-    return "#{self.x}, #{self.y}, #{DIRECTION_CONVERT.key((self.trueDirection))}"
+    return "#{self.x},#{self.y},#{DIRECTION_CONVERT.key((self.trueDirection))}"
   end
 
 end 
