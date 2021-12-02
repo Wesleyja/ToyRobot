@@ -6,6 +6,6 @@ ruby '3.0.0'
 gem 'simplecov'
 gem 'rspec'
 gem 'rspec-core'
-gem 'byebug'
+# gem 'byebug'
 gem 'factory_bot'
-gem "active_model"
+gem "activemodel"
