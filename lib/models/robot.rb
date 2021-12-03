@@ -2,8 +2,6 @@
 require 'active_model' 
 class Robot
 
-  DIRECTIONS = ['NORTH', 'SOUTH', 'EAST', 'WEST']
-
   DIRECTION_CONVERT = {
     'NORTH' => 0,
     'SOUTH' => 180,
@@ -13,8 +11,11 @@ class Robot
   POSITION = (0..4).to_a
 
   include ActiveModel::Validations
+  include ActiveModel::Dirty
+  include ActiveModel::AttributeMethods
 
   attr_accessor :x, :y, :direction
+  define_attribute_methods :x, :y
   validates_presence_of :x, :y
   validates_presence_of :direction, allow_nil: true
   validates_inclusion_of :x, :y, in: POSITION
@@ -27,7 +28,7 @@ class Robot
 
   def self.place(x, y, direction)
     robot = self.new(x, y)
-    if (DIRECTIONS.include?(direction.upcase))
+    if (DIRECTION_CONVERT.keys.include?(direction.upcase))
       robot.direction = DIRECTION_CONVERT[direction.upcase]
     end
 
@@ -40,31 +41,32 @@ class Robot
 
   def trueDirection 
     return unless self.placed?
-
-    self.direction%360
+    
+    self.direction = self.direction%360
   end
 
   def move 
     return unless self.placed?
 
-    oldY = self.y
-    oldX = self.x
-    # Would rather have used ActiveModel::Dirty here :(
     case self.trueDirection
     when 0 
+      y_will_change!
       self.y += 1
     when 90
+      x_will_change!
       self.x += 1
     when 180 
+      y_will_change!
       self.y -= 1
     when 270
+      x_will_change!
       self.x -= 1
     end
 
     unless self.valid?
-      self.y = oldY
-      self.x = oldX
+      restore_attributes
     end
+    changes_applied
   end
 
   def left 

@@ -108,4 +108,8 @@ And you're ready to go!
 ```bundle exec rspec```
 
 
-### Considerations about the development:
+### Assumptions Made:
+
+ * As the brief doesn't specify that the tabletop ('plane') has to be seperate to the robot, i took the plane to be a part of the robot. Similar to if the robot was placed inside of a self-contained box
+
+ * With the brief stating that the robot 'can' refuse any commands given while not placed, i have assumed that it will 100% ignore it.
