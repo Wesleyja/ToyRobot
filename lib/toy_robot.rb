@@ -27,21 +27,18 @@ class ToyRobot
     puts 'REPORT'
     print '> '
   end
-
-  def place_input
-
-
-  end
-
+  
   def route_action(choice)
+
     if choice.downcase.include?('place')
       input = 'place'
-      inputs = /^place\s(.*)/i.match(choice)[1].gsub(' ', '').split(',')
+      inputs = /^place\s(.*)/i.match(choice)[1].gsub(' ', '').split(',') rescue nil
     else 
       input = choice.gsub(' ', '')
     end
+
     case input.upcase.to_sym
-    when :PLACE then @robot = Robot.place(inputs[0].to_i, inputs[1].to_i, inputs[2])
+    when :PLACE then @robot = robot_place(inputs[0],inputs[1], inputs[2])
     when :MOVE then @robot.move
     when :LEFT then @robot.left
     when :RIGHT then @robot.right
@@ -49,6 +46,14 @@ class ToyRobot
     when :EXIT then stop!
     else puts 'Try again...'
     end
+  end
+
+  def robot_place(x, y, direction)
+    robot = Robot.place(x, y, direction)
+    unless robot.valid?
+      puts 'Invalid input'
+    end 
+    robot
   end
 
   def stop!

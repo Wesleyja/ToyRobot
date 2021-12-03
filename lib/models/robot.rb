@@ -26,12 +26,16 @@ class Robot
     @direction = nil
   end
 
-  def self.place(x, y, direction)
+  def self.place(x = nil, y = nil, direction = nil)
+
+    x = Integer(x) rescue nil
+    y = Integer(y) rescue nil
+
     robot = self.new(x, y)
 
-    unless robot.valid?
-      puts 'Invalid Coordinates'
-      return robot = self.new()
+    unless robot.valid? 
+      # puts 'Invalid Input'
+      return self.new() 
     end
 
     if (DIRECTION_CONVERT.keys.include?(direction.upcase))
