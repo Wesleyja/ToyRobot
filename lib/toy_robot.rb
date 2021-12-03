@@ -23,8 +23,8 @@ class ToyRobot
     puts 'MOVE'
     puts 'LEFT'
     puts 'RIGHT'
-    puts 'EXIT'
     puts 'REPORT'
+    puts 'EXIT'
     print '> '
   end
   
