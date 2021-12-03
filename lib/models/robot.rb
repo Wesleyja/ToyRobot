@@ -28,6 +28,12 @@ class Robot
 
   def self.place(x, y, direction)
     robot = self.new(x, y)
+
+    unless robot.valid?
+      puts 'Invalid Coordinates'
+      return robot = self.new()
+    end
+
     if (DIRECTION_CONVERT.keys.include?(direction.upcase))
       robot.direction = DIRECTION_CONVERT[direction.upcase]
     end
@@ -41,7 +47,7 @@ class Robot
 
   def trueDirection 
     return unless self.placed?
-    
+
     self.direction = self.direction%360
   end
 

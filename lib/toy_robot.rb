@@ -9,7 +9,7 @@ class ToyRobot
   def run
     while @running
       print_menu
-      choice = gets.chomp.split(' ')
+      choice = gets.chomp
       route_action(choice)
     end
   end
@@ -24,15 +24,24 @@ class ToyRobot
     puts 'LEFT'
     puts 'RIGHT'
     puts 'EXIT'
+    puts 'REPORT'
     print '> '
   end
 
+  def place_input
+
+
+  end
+
   def route_action(choice)
-    if choice[0].upcase.include?('PLACE')
-      values = choice[1].split(',')
+    if choice.downcase.include?('place')
+      input = 'place'
+      inputs = /^place\s(.*)/i.match(choice)[1].gsub(' ', '').split(',')
+    else 
+      input = choice.gsub(' ', '')
     end
-    case choice[0].upcase.to_sym
-    when :PLACE then @robot = Robot.place(values[0].to_i, values[1].to_i, values[2])
+    case input.upcase.to_sym
+    when :PLACE then @robot = Robot.place(inputs[0].to_i, inputs[1].to_i, inputs[2])
     when :MOVE then @robot.move
     when :LEFT then @robot.left
     when :RIGHT then @robot.right

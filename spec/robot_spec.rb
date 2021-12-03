@@ -14,6 +14,28 @@ RSpec.describe 'Robot Spec', type: :class do
     end
   end
 
+  describe 'Error inputting' do 
+
+    context 'inputs co-ordinates not valid' do 
+
+      it 'x value' do 
+        
+      end
+
+      it 'y value' do 
+
+      end
+
+      it 'Direction value' do 
+
+      end
+
+
+    end
+
+
+  end
+
   describe 'robot assumptions' do 
     let(:empty_robot) { create(:robot) }
     let(:empty_robot_two) { create(:robot) }
