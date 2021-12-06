@@ -40,6 +40,11 @@ RSpec.describe 'Robot Spec', type: :class do
           placed_error(robot)
         end
 
+        it 'robot not being placed' do 
+          robot = Robot.new()
+          expect(robot.valid?).to be false
+        end
+
       end
 
 
@@ -131,6 +136,7 @@ RSpec.describe 'Robot Spec', type: :class do
     end 
 
     context 'large amount of commands' do 
+
       it 'PLACE 0,0,NORTH -> 4,4,SOUTH ' do 
         robot = Robot.place( 0, 0, 'NORTH')
         robot.left
@@ -177,6 +183,26 @@ RSpec.describe 'Robot Spec', type: :class do
         robot.right
         # 4,4 south
         expect(robot.report).to include('4,4,SOUTH')
+      end
+
+      it 'rotate in circle left' do 
+        robot = Robot.place(0,0,'NORTH')
+        100.times do 
+          robot.left
+        end
+
+        expect(robot.report).to include('0,0,NORTH')
+
+      end
+
+      it 'rotate in circle right' do 
+        robot = Robot.place(0,0,'NORTH')
+        100.times do 
+          robot.right
+        end
+
+        expect(robot.report).to include('0,0,NORTH')
+
       end
 
     end
