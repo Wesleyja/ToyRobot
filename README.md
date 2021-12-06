@@ -41,10 +41,6 @@ REPORT
 
 * A robot that is not on the table can choose to ignore the `MOVE`, `LEFT`, `RIGHT` and `REPORT` commands.
 
-* Input can be from a file, or from standard input, as the developer chooses.
-
-* Provide test data to exercise the application.
-
 ### Constraints
 
 * The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot.
